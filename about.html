@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Shan Shubraiz</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<script defer src="assets/js/script.js"></script>
+</head>
+<body>
+  <nav>
+  <div class="logo">🧬 SeqRaiz</div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    
+    <li class="dropdown">
+      <a href="Programs\programs.html">Programs</a>
+        <div class="dropdown-content">
+          <a href="Programs\python-mini-programs\python-mini-programs.html">Python Mini Programs</a>
+          <a href="Programs\Command_Line_Programs\Command_Line_Programs.html">Command Line Programs</a>
+        </div>
+    </li>
+    <li><a href="Blogs\blogs.html">Blogs</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+  <!-- <search> -->
+  <!-- <form action="/search" method="get"> -->
+    <!-- <input name="fsrch" id="fsrch" placeholder="Search here" style="margin-top: 0.5rem; margin-left: 150%; padding: 6px 12px; width: 200px;background-color: #e3f2fd;"> -->
+  <!-- </form> -->
+</search>  
+  <main>
+    <h1>About Me</h1>
+    <div style="max-width:700px;margin:0 auto 2.5rem auto;padding:1.5rem 2rem;background:#f8fafc;border-radius:14px;box-shadow:0 2px 12px #007acc11;">
+      <p style="font-size:1.15rem;line-height:1.7;">
+        Hi, I’m <strong>Shan Shubraiz</strong> — a Bioinformatics undergraduate, researcher-in-training, and passionate lifelong learner. My journey combines biology, coding, and data science, where I explore the hidden patterns of genes, proteins, and evolution.
+      </p>
+      <p style="font-size:1.08rem;line-height:1.7;">
+        Since 2017, I’ve also been working as a private tutor, teaching students from kindergarten to BS level. This experience not only honed my skills in communication, patience, and adaptability, but also strengthened my ability to simplify complex concepts — something I carry into both research and writing.
+      </p>
+      <p style="font-size:1.08rem;line-height:1.7;">
+        Beyond academics, I write blogs on bioinformatics and modern knowledge, and run a YouTube channel where I share content on self-improvement, coding, and bioinformatics basics.
+      </p>
+      <h2 style="margin-top:2.2rem;font-size:1.3rem;">My current focus areas include:</h2>
+      <ul style="font-size:1.08rem;line-height:1.7;margin-bottom:1.5rem;">
+        <li>Gene families and their evolutionary relationships</li>
+        <li>Protein analysis and functional studies</li>
+        <li>Computational approaches in genomics</li>
+      </ul>
+      <p style="font-size:1.08rem;line-height:1.7;">
+        My long-term vision is to grow as a bioinformatics researcher and freelancer, contributing to impactful discoveries that bridge science and technology.
+      </p>
+      <div style="margin:2rem 0 1.5rem 0;text-align:center;">
+        <img src="images\Thumbnails\shubraiz.jpeg" alt="Shan Shubraiz" style="width:160px;height:160px;object-fit:cover;border-radius:50%;box-shadow:0 2px 12px #007acc33;">
+      </div>
+      <div style="text-align:center;margin-bottom:1.5rem;">
+        <button id="resumeRequestBtn" style="background:#007acc;color:#fff;padding:0.7rem 1.5rem;border:none;border-radius:6px;font-size:1rem;cursor:pointer;">Request My Resume/CV</button>
+      </div>
+      <!-- Modal for Resume Request -->
+      <div id="resumeModal" style="display:none;position:fixed;z-index:1000;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,0.35);align-items:center;justify-content:center;">
+        <div style="background:#fff;padding:2rem 1.5rem;border-radius:10px;max-width:340px;width:90vw;box-shadow:0 2px 16px #007acc33;position:relative;text-align:center;">
+          <button onclick="document.getElementById('resumeModal').style.display='none'" style="position:absolute;top:10px;right:14px;background:none;border:none;font-size:1.3rem;cursor:pointer;color:#888;">&times;</button>
+          <h3 style="margin-bottom:1.2rem;">How would you like to receive my Resume/CV?</h3>
+          <a href="mailto:shubraizshan@gmail.com?subject=Request%20for%20Resume%2FCV" style="display:inline-block;margin:0.5rem 0.5rem 0.5rem 0;text-decoration:none;">
+            <button style="background:#007acc;color:#fff;padding:0.6rem 1.2rem;border:none;border-radius:6px;font-size:1rem;cursor:pointer;">Email</button>
+          </a>
+          <a href="https://wa.me/923363921034?text=Hi%20Shan%2C%20I%20would%20like%20to%20request%20your%20Resume%2FCV." target="_blank" style="display:inline-block;margin:0.5rem 0.5rem 0.5rem 0;text-decoration:none;">
+            <button style="background:#25d366;color:#fff;padding:0.6rem 1.2rem;border:none;border-radius:6px;font-size:1rem;cursor:pointer;">WhatsApp</button>
+          </a>
+        </div>
+      </div>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          var btn = document.getElementById('resumeRequestBtn');
+          if(btn) {
+            btn.onclick = function() {
+              document.getElementById('resumeModal').style.display = 'flex';
+            };
+          }
+          var modal = document.getElementById('resumeModal');
+          if(modal) {
+            modal.onclick = function(e) {
+              if(e.target === modal) modal.style.display = 'none';
+            };
+          }
+        });
+      </script>
+      <div style="text-align:center;font-size:1.08rem;">
+        Interested in knowing more? Feel free to <a href="contact.html" style="color:#007acc;text-decoration:underline;">connect with me</a> for research collaborations, freelance projects, or knowledge-sharing.
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="social-links" style="margin-bottom:1rem; text-align:center;">
+      <a href="https://www.linkedin.com/in/muhammad-shan-shubraiz-370873106/" target="_blank" style="margin:0 10px;">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" style="width:32px;height:32px;vertical-align:middle;filter:invert(36%) sepia(99%) saturate(747%) hue-rotate(176deg) brightness(92%) contrast(92%);">
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=61557894315656" target="_blank" style="margin:0 10px;">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook" style="width:32px;height:32px;vertical-align:middle;filter:invert(27%) sepia(99%) saturate(749%) hue-rotate(175deg) brightness(98%) contrast(92%);">
+      </a>
+      <a href="https://www.instagram.com/shan_shubraiz/" target="_blank" style="margin:0 10px;">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" style="width:32px;height:32px;vertical-align:middle;filter:invert(23%) sepia(99%) saturate(7499%) hue-rotate(357deg) brightness(98%) contrast(92%);">
+      </a>
+      <a href="https://www.fiverr.com/shan_shubraiz" target="_blank" style="margin:0 10px;">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/fiverr.svg" alt="Fiverr" style="width:32px;height:32px;vertical-align:middle;filter:invert(48%) sepia(99%) saturate(749%) hue-rotate(95deg) brightness(98%) contrast(92%);">
+      </a>
+      <a href="https://www.youtube.com/@shanshubraiz/featured" target="_blank" style="margin:0 10px;">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" style="width:32px;height:32px;vertical-align:middle;filter:invert(23%) sepia(99%) saturate(7499%) hue-rotate(357deg) brightness(98%) contrast(92%);">
+      </a>
+      <div style="margin-top:0.5rem; color:#555; font-size:1rem;">Follow me on social media and subscribe to my YouTube channel!</div>
+    </div>
+    <p>&copy; 2025 Shan Shubraiz</p>
+  </footer>
+</body>
+</html>

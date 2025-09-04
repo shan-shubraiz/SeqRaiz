@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BLAST | Shan Shubraiz</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+<script defer src="../assets/js/script.js"></script>
+</head>
+<body>
+       <nav>
+    <div class="logo">🧬 SeqRaiz</div>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="../Programs/programs.html">Programs</a>
+            <div class="dropdown-content">
+              <a href="../Programs/python-mini-programs/python-mini-programs.html">Python Mini Programs</a>
+              <a href="../Programs/Command_Line_Programs/Command_Line_Programs.html">Command Line Programs</a>
+            </div>
+        </li>
+        <li><a href="blogs.html">Blogs</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+  </nav>
+  <!-- <form action="/search" method="get"> -->
+    <!-- <input name="fsrch" id="fsrch" placeholder="Search here" style="margin-top: 0.5rem; margin-left: 150%; padding: 6px 12px; width: 200px;background-color: #e3f2fd;"> -->
+  <!-- </form> -->
+<!-- </search>   -->
+<main>
+      
+   <h1 style="text-align:center; margin-bottom:1.5rem; font-size:3.0rem; background-color: rgb(236, 248, 236); border:2.5px solid rgb(71, 120, 66); color: #004d40;">
+      INTRODUCTION TO BLAST <br>
+         <bdi style="text-align:center; margin-bottom:1.5rem; font-size:1.5rem; background-color: rgb(236, 248, 248); color: #004d40;">A BEGINNER'S GUIDE</bdi>
+   </h1>
+   <p style="margin: 6px 0 0;" id="date" align="right" > <b>Published on: August 26, 2025</b></p><hr><br>
+      <p style="text-align: justify; text-indent: 70px;" >  Have you ever noticed, whenever we see something new, our mind compares it with something. Just because it has no
+               name for that thing, so it compares and anticipate that it looks like this or
+               that and that's how you get an idea or perception about that thing. But when
+               you're a bioinformatician or a researcher and playing with biological codes, you
+               often come across unknown biological sequences and to get an idea about that
+               sequence you compare it with already annotated sequences. In simple words, this
+               comparison of biological sequences is called BLAST.
+               This comparison is vital for any biological research whether you're working with
+               genomic data or proteins. Finding sequence similarity is the backbone of many
+               biological discoveries. So, to get more familiarity with BLAST. Let's dig into
+               it.
+      </p>
+   <h4 style="text-align: left; margin: 1rem 0; color: #010f03; font-size: 1.5em; font-family:'Courier New', Courier, monospace ;">
+      <b><u>What is BLAST?</u></b>
+   </h4>
+      <p style="text-align: justify;">
+            The <b>Basic Local Alignment Search Tool(BLAST)</b> finds regions of local similarity between sequences. The program
+            compares nucleotide or protein sequences to sequence databases and calculates
+            the statistical significance of matches. BLAST can be used to infer functional
+            and evolutionary relationships between sequences as well as help identify
+            members of gene families.
+      </p>
+         <p style="text-align: justify;">
+               In simple words: if you have a sequence and you want to know what is this, and does it
+               look like something we already know?', BLAST is the go-to tool.
+         </p>
+   <h4 style="text-align: left; margin: 1rem 0; color: #010f03; font-size: 1.5em; font-family:'Courier New', Courier, monospace ;">
+      <b><u>Why is BLAST Important?</u></b>
+   </h4>
+         <p style="text-align: justify;">
+               BLAST is considered a lifeline in bioinformatics because:
+         </p>
+         <ul style='margin-top:0cm' type=disc>
+            <li>
+               It helps identify <b>unknown sequences</b> by matching them with known genes/proteins.
+            </li>
+            <li>
+               It provides insights into <b>evolutionary relationships</b> among species.
+            </li>
+            <li>
+               It is essential in <b>functional annotation</b> of genomes.
+            </li>
+            <li>
+               It is fast and efficient, making it suitable for both research labs and classrooms.
+            </li>
+         </ul>
+         <p style="text-align: justify;">
+               Without BLAST, modern genomics would feel like searching for a needle in a haystack blindly!
+         </p>
+   <h4 style="text-align: left; margin: 1rem 0; color: #010f03; font-size: 1.5em; font-family:'Courier New', Courier, monospace ;">
+      <b><u>How Does BLAST Work Behind the Scenes?</u></b>
+   </h4>
+      <p style="text-align: justify;">
+       BLAST (Basic Local Alignment Search Tool) uses specialized algorithms to quickly find
+       regions of similarity between sequences. Instead of comparing every nucleotide
+       or amino acid one by one, BLAST breaks sequences into shorter portions (called <i>k-mers</i>). 
+       These words are matched with database sequences, and potential matches are extended into longer alignments. To speed things up,
+       BLAST applies <b>heuristic techniques</b> smart shortcuts that prioritize the
+       most promising regions instead of exhaustively searching all possibilities.
+       Under the hood, BLAST builds upon classic sequence alignment algorithms like
+       the <b>Smith Waterman algorithm</b> (for local alignment) and the <b>Needleman Wunsch
+       algorithm</b> (for global alignment), but adapts them in a way that makes the
+       search much faster without losing reliability.
+      </p>
+      <p style="text-align: justify;">
+        Think of it like finding a quotation in a large book: instead of reading every page from
+        start to finish, you first look for a few unique words, then scan around them
+        to locate the whole sentence. In the same way, BLAST focuses on short sequence
+        words first and then extends the match, making it both fast and reliable.
+      </p>
+   <h4 style="text-align: left; margin: 1rem 0; color: #010f03; font-size: 1.5em; font-family:'Courier New', Courier, monospace ;">
+      <b><u>Types of BLAST</u></b>
+   </h4>
+         <p>
+            Depending  on the type of sequence you're working with, BLAST offers several versions:
+         </p>
+
+         <div align="center">
+  <table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif;">
+
+    <!-- Table Header -->
+    <tr style="background-color: #447744; color: white; text-align: center; font-weight: bold; font-size: 1rem;">
+      <th style="padding: 10px; border: 1px solid #ddd;">Type</th>
+      <th style="padding: 10px; border: 1px solid #ddd;">Query vs Database</th>
+      <th style="padding: 10px; border: 1px solid #ddd;">Functions (default in bold)</th>
+    </tr>
+
+    <!-- BLASTn -->
+    <tr style="background-color: #d9ead3; border: 1px solid #ddd;">
+      <th style="padding: 8px; text-align: center; background-color: #71a66a; color: white;">blastn (Nucleotide BLAST)</th>
+      <td style="padding: 8px;">Nucleotide vs Nucleotide</td>
+      <td style="padding: 8px;">
+        <b>Megablast:</b> sequence identification, intra-species comparison<br>
+        Discontiguous megablast: cross-species comparison, searching with coding sequences<br>
+        blastn: searching with shorter queries, cross-species comparison
+      </td>
+    </tr>
+
+    <!-- BLASTp -->
+    <tr style="background-color: #f0f8f0; border: 1px solid #ddd;">
+      <th style="padding: 8px; text-align: center; background-color: #71a66a; color: white;">blastp (Protein BLAST)</th>
+      <td style="padding: 8px;">Protein vs Protein</td>
+      <td style="padding: 8px;">
+        <b>blastp:</b> general sequence identification and similarity searches<br>
+        Quick BLASTP: with a k-mer match to accelerate search speed for very similar proteins<br>
+        DELTA-BLAST: protein similarity search with higher sensitivity than blastp<br>
+        PSI-BLAST: iterative search using PSSM to identify distant relatives in a protein family<br>
+        PHI-BLAST: protein alignment with input pattern as anchor/constraint
+      </td>
+    </tr>
+
+    <!-- BLASTx -->
+    <tr style="background-color: #d9ead3; border: 1px solid #ddd;">
+      <th style="padding: 8px; text-align: center; background-color: #71a66a; color: white;">blastx</th>
+      <td style="padding: 8px;">Nucleotide (translated) vs Protein</td>
+      <td style="padding: 8px;">
+        <b>blastx:</b> identifying potential protein products encoded by a nucleotide query
+      </td>
+    </tr>
+
+    <!-- tBLASTn -->
+    <tr style="background-color: #f0f8f0; border: 1px solid #ddd;">
+      <th style="padding: 8px; text-align: center; background-color: #71a66a; color: white;">tblastn</th>
+      <td style="padding: 8px;">Protein vs Nucleotide (translated)</td>
+      <td style="padding: 8px;">
+        <b>tblastn:</b> identifying database sequences encoding proteins similar to the query
+      </td>
+    </tr>
+
+    <!-- tBLASTx -->
+    <tr style="background-color: #d9ead3; border: 1px solid #ddd;">
+      <th style="padding: 8px; text-align: center; background-color: #71a66a; color: white;">tblastx</th>
+      <td style="padding: 8px;">Nucleotide (translated) vs Nucleotide (translated)</td>
+      <td style="padding: 8px;">
+        <b>tblastx:</b> identifying nucleotide sequences similar to the query based on coding potential
+      </td>
+    </tr>
+
+  </table>
+</div>
+
+         <br>
+   <h4 style="text-align: left; margin: 1rem 0; color: #010f03; font-size: 1.5em; font-family:'Courier New', Courier, monospace ;">
+            <b><u>Methods to Run BLAST</u></b>
+   </h4>
+         <p style="text-align: justify;" > 
+               There are <b>multiple
+               ways</b> to run BLAST depending on your needs and expertise level:
+         </p>
+         <ol style='margin-top:0cm' start=1 type=1>
+            <li>
+               <b>NCBI BLAST Webpage</b>
+            <br><p style="text-align: justify; text-indent: 3%"">
+            The most common and beginner-friendly method. NCBI provides an easy-to-use
+            interface where you paste/upload your sequence and get results instantly.
+                </p> 
+            </li>
+            <li>
+               <b>Other Online Platforms</b>
+            </li>
+            <ul style='margin-top:0cm' type=circle>
+               <li>
+                  <p style="text-align: justify;">
+                     <b> EBI (European Bioinformatics Institute)</b>
+                     also offers a BLAST service. 
+                  </p>
+               </li>
+               <li>
+                  <p style="text-align: justify;">
+                  Some specialized databases
+                  (like UniProt and Ensembl) provide BLAST within their own systems.
+                  </p>
+               </li>
+            </ul>
+            <li>
+               <b>Biopython</b>
+               <br><p style="text-align: justify; text-indent: 3%"">
+                  For coders, BLAST can be automated and integrated into Python scripts
+                  using <b>Biopython</b>. We've already covered
+                  this in detail, you can find its find its code and explantion here: <a href="blast-python.html" style="color:#2193b0;font-weight:600;text-decoration:underline;" target="_blank">BLAST Using Python &rarr;</a><br>
+            </li>
+            <li>
+               <b>Command-line BLAST</b>
+                  <br><p style="text-align: justify; text-indent: 3%"">
+                  This is the most powerful and flexible option. It allows you to create local
+                  databases, analyze large datasets, and automate searches. But it is not
+                  easy for a beginner. You can learn it here: <a href="blast-cmd.html" style="color:#2193b0;font-weight:600;text-decoration:underline;" target="_blank">BLAST Using Command Line &rarr;</a><br>
+                     </p>
+            </li>
+         </ol>
+   <h4 style="text-align: left; margin: 1rem 0; color: #010f03; font-size: 1.5em; font-family:'Courier New', Courier, monospace ;">
+      <b><u>How to Run BLAST Using NCBI (Step-by-Step)</u></b>
+   </h4>
+      <p style="text-align: justify;">
+         Here's the simplest way to know about known biological sequence:
+      </p>
+         <ol style='margin-top:0cm' start=1 type=1>
+            <li> <p style = "text-align: justify;">Go directly to the
+                 <a href="https://blast.ncbi.nlm.nih.gov/Blast.cgi" target="_blank"> NCBI BLAST webpage</a>
+                     or simply search NCBI BLAST in
+                     your internet browser and from search result select the following: </p>
+                     <figure class="blog-figure">
+                        <img src="../images/BLAST_blog/Picture1.png" class="blog-image" alt="NCBI BLAST search result">
+                     </figure>
+               </li>
+         </ol><br>
+         <ol style='margin-top:0cm' start=2 type=1>
+            <li><p style = "text-align: justify;">
+                  Choose the appropriate BLAST program (BLASTn BLASTp, etc.) by clicking on it.</p>
+                 <figure class="blog-figure">
+                     <img src="../images/BLAST_blog/Picture2.png" class="blog-image" alt="NCBI BLAST options">
+                  </figure> 
+            </li>
+         </ol><br>
+         <ol style='margin-top:0cm' start=3 type=1>
+            <li><p style = "text-align: justify;">
+                  Paste your sequence upload
+                  sequence file (check the required formats first) into the search box or
+                  upload a file.</p>
+            </li>
+            <li><p style = "text-align: justify;">
+                  Select a database (e.g., nr for non-redundant database) and organism. This step is according to your
+                  choice and project.</p>
+            </li>
+            <li><p style = "text-align: justify;">
+                  Click <b>BLAST</b> and wait for
+                  results.</p>
+                <figure class="blog-figure">
+                  <img src="../images/BLAST_blog/Picture3.png" class="blog-image" alt="NCBI BLAST options">
+                </figure>   
+            </li>
+         </ol><br>
+        
+         <ol style='margin-top:0cm' start=6 type=1>
+            <li><p style = "text-align: justify;">
+                  Interpret the query results, e-values, and similarities.</p>
+                  <figure class="blog-figure">
+                     <img src="../images/BLAST_blog/Picture4.png" class="blog-image" alt="NCBI BLAST options">
+                  </figure> 
+            </li>
+         </ol><br>
+         <p style=" text-align: justify;">
+            <strong>Note:</strong> To learn about the interpretation of these results you
+            can also watch my video tutorial by clicking here:
+            <a href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" target="_blank">EVERYTHING ABOUT BLAST</a>
+            or visit my 
+            <a href="https://www.youtube.com/channel/UCpGanasd_X_dHgP4OT9tv-g/about" target="_blank">YouTube channel</a>.
+         </p>
+   <h4 style="text-align: left; margin: 1rem 0; color: #010f03; font-size: 1.5em; font-family:'Courier New', Courier, monospace ;">
+      <b><u>Conclusion:</u></b>
+   </h4>
+      <p style="text-align: justify; text-indent: 3%"">
+         BLAST isnot just a tool it is a 
+         <b>gateway into understanding biology at the sequence
+         level</b>. 
+         From identifying unknown sequences to exploring evolutionary history, its applications are endless.
+         </p>
+          <p style="text-align: justify; text-indent: 3%"">If you're
+      new, start with the NCBI web version and practice. As you grow, you can move
+      towards <span class=SpellE>Biopython</span> and command-line BLAST for advanced
+      research projects.</p>   
+         <p style="text-align: justify; text-indent: 3%"">
+            For visual learners, I recommend checking out my 
+            <a href="https://www.youtube.com/channel/UCpGanasd_X_dHgP4OT9tv-g/about" target="_blank">YouTube tutorials</a> where BLAST runs are
+            explained step by step. It's often easier to learn when you see it in action.
+         </p>
+         <p style="text-align: justify; text-indent: 3%"">
+            If you have any questions or need further clarification, feel free to leave a comment below or reach out to me via the contact page. I'm here to help you on your bioinformatics journey!
+         </p>
+         <p style="text-align: justify; text-indent: 3%"">
+            Remember, like any tool, the more you use BLAST, the more proficient you'll become. </p>
+            <p class="fun-note">
+               <span class="star left">🧬</span>
+               <span class="text">HAPPY BLASTING!</span>
+               <span class="star right">🧬</span>
+            </p>
+         </div>
+      </main>
+ <footer>
+   <div class="social-links" style="margin-bottom:1rem; text-align:center;">
+     <a href="https://www.linkedin.com/in/muhammad-shan-shubraiz-370873106/" target="_blank" style="margin:0 10px;">
+       <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" style="width:32px;height:32px;vertical-align:middle;filter:invert(36%) sepia(99%) saturate(747%) hue-rotate(176deg) brightness(92%) contrast(92%);">
+     </a>
+     <a href="https://www.facebook.com/profile.php?id=61557894315656" target="_blank" style="margin:0 10px;">
+       <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook" style="width:32px;height:32px;vertical-align:middle;filter:invert(27%) sepia(99%) saturate(749%) hue-rotate(175deg) brightness(98%) contrast(92%);">
+     </a>
+     <a href="https://www.instagram.com/shan_shubraiz/" target="_blank" style="margin:0 10px;">
+       <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" style="width:32px;height:32px;vertical-align:middle;filter:invert(23%) sepia(99%) saturate(7499%) hue-rotate(357deg) brightness(98%) contrast(92%);">
+     </a>
+     <a href="https://www.fiverr.com/shan_shubraiz" target="_blank" style="margin:0 10px;">
+       <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/fiverr.svg" alt="Fiverr" style="width:32px;height:32px;vertical-align:middle;filter:invert(48%) sepia(99%) saturate(749%) hue-rotate(95deg) brightness(98%) contrast(92%);">
+     </a>
+     <a href="https://www.youtube.com/@shanshubraiz/featured" target="_blank" style="margin:0 10px;">
+       <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" style="width:32px;height:32px;vertical-align:middle;filter:invert(23%) sepia(99%) saturate(7499%) hue-rotate(357deg) brightness(98%) contrast(92%);">
+     </a>
+     <div style="margin-top:0.5rem; color:#555; font-size:1rem;">Follow me on social media and subscribe to my YouTube channel!</div>
+   </div>
+   <p>&copy; 2025 Shan Shubraiz</p>
+ </footer>   
+</body>
+</html>

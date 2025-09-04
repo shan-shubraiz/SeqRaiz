@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blast Using Command Line | Shan Shubraiz</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+<script defer src="../../assets/js/script.js"></script>
+  <style>
+    .download-btn {
+      display: inline-block;
+      background: #43c59e;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.5em 1.2em;
+      font-size: 1em;
+      font-weight: 600;
+      margin: 1.2em auto 0 auto;
+      cursor: pointer;
+      box-shadow: 0 2px 8px #43c59e33;
+      transition: background 0.2s;
+    }
+    .download-btn:hover { background: #2193b0; }
+  
+
+    .blast-header-wrap { display: flex; align-items: center; justify-content: space-between; position: relative; }
+    @media (max-width: 600px) { .pdf-btn { right: 8px; top: 8px; font-size: 0.9em; padding: 0.4em 0.7em; } }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+
+  <script>
+    function copyCode(btn, codeId) {
+      const code = document.getElementById(codeId).innerText;
+      navigator.clipboard.writeText(code);
+      btn.innerText = 'Copied!';
+      setTimeout(() => { btn.innerText = 'Copy'; }, 1200);
+    }
+    function downloadImage(imgId) {
+      const img = document.getElementById(imgId);
+      const link = document.createElement('a');
+      link.href = img.src;
+      link.download = img.alt || 'codesnap.png';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+    function downloadPDF(fileID) {
+      const main = document.querySelector('main');
+      const opt = {
+        margin:       0.2,
+        filename:     'BLAST_python.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2 },
+        jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+      };
+      const feedback = document.getElementById('pdf-feedback');
+      feedback.innerText = '';
+      html2pdf().set(opt).from(main).save()
+        .then(function() {
+          feedback.innerText = 'PDF downloaded successfully!';
+          feedback.style.color = '#219150';
+          setTimeout(() => { feedback.innerText = ''; }, 2500);
+        })
+        .catch(function(err) {
+          feedback.innerText = 'PDF download failed. Please try again.';
+          feedback.style.color = '#b71c1c';
+        });
+    }
+  </script>
+</head>
+<body>
+    <nav>
+  <div class="logo">🧬 SeqRaiz</div>
+    <ul>
+      <li><a href="../../index.html">Home</a></li>
+      <li class="dropdown">
+        <a href="../programs.html">Programs</a>
+          <div class="dropdown-content">
+            <a href="../python-mini-programs/python-mini-programs.html">Python Mini Programs</a>
+            <a href="Command_Line_Programs.html">Command Line Programs</a>
+          </div>
+      </li>
+      <li><a href="../../Blogs/blogs.html">Blogs</a></li>
+      <li><a href="../../about.html">About</a></li>
+      <li><a href="../../contact.html">Contact</a></li>
+    </ul>
+</nav>
+  <!-- <search> -->
+  <!-- <form action="/search" method="get"> -->
+    <!-- <input name="fsrch" id="fsrch" placeholder="Search here" style="margin-top: 0.5rem; margin-left: 150%; padding: 6px 12px; width: 200px;background-color: #e3f2fd;"> -->
+  <!-- </form> -->
+<!-- </search>   -->
+ 
+<main>
+  <div class="blast-header-wrap">
+     <h1 class="fun-note">
+  <span class="star left">🧬</span>
+  <span class="text">BLAST - Using CMD!</span>
+  <span class="star right">🧬</span>
+     </h1>
+   </div>
+  <div class="chip"> <h2>Code </h2></div>
+  
+  <section style="max-width:700px;margin-top:0.5em;">
+     <img id="blast_code-img" src="../../images/Programs/Command Line Programs/BLAST_cmd.png" alt="Blast Python Code Snippet" style="width:100%;max-width:600px;border-radius:12px;box-shadow:0 4px 24px #007acc33;margin:2em auto;display:block;">
+        <button class="download-btn" onclick="downloadImage('blast_code-img')">Download Snap</button>
+    </div>
+  </section>
+
+    <div class="chip">
+<h2>Description</h2></div>
+    <section style="max-width:700px;margin-top:0.5em;">
+        <div style="margin-bottom:1.5em;text-align:center;">
+    <a href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" target="_blank" style="display:inline-block;background:#f44336;color:#fff;padding:0.5em 1.2em;border-radius:8px;font-weight:600;text-decoration:none;box-shadow:0 2px 8px #f4433633;transition:background 0.2s;">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" style="width:22px;height:22px;vertical-align:middle;margin-right:8px;filter:invert(23%) sepia(99%) saturate(7499%) hue-rotate(357deg) brightness(98%) contrast(92%);">
+      Watch on YouTube
+    </a>
+  </div>
+  <h2>🚀 Running BLAST from the Command Line</h2>
+  <p>
+    BLAST can also be executed directly through the command line (CMD or Terminal), which is faster and more flexible for batch processing. 
+    Below are the steps to install and run BLAST locally on Windows.
+  </p>
+
+  <h3>Step 1: Download BLAST+</h3>
+  <ul>
+    <li>Go to the official NCBI BLAST+ download page: 
+      <a href="https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/">Download BLAST+</a>
+    </li>
+    <li>Download the ZIP file for your operating system (e.g., <code>win64</code> for 64-bit Windows).</li>
+    <li>Extract the folder (e.g., <code>ncbi-blast-2.x.x+</code>) to a location such as <code>C:\Program Files\BLAST+</code>.</li>
+  </ul>
+
+  <h3>Step 2: Add BLAST+ to PATH</h3>
+  <ul>
+    <li>Open <b>System Properties</b> → <b>Environment Variables</b>.</li>
+    <li>Find <b>Path</b>, click <b>Edit</b>, and add the <code>bin</code> folder inside your BLAST installation (e.g., <code>C:\Program Files\BLAST+\bin</code>).</li>
+    <li>Open a new CMD window and check installation by typing:
+      <pre><code>blastn -version</code></pre>
+    </li>
+  </ul>
+
+  <h3>Step 3: Prepare Query and Database</h3>
+  <ul>
+    <li>Place your query file in FASTA format, e.g., <code>query.fasta</code>, inside your working directory.</li>
+    <li>If using a <b>local database</b>, format it first using <code>makeblastdb</code>:
+      <pre><code>makeblastdb -in my_sequences.fasta -dbtype nucl -out mydb</code></pre>
+    </li>
+    <li>If using NCBI’s remote database, you can use <code>-db nt -remote</code> directly.</li>
+<section>
+ <ul>
+   <li><p>If you want to read about BLAST
+   <a href="../../Blogs/BLAST_Blog.html" style="color:#2193b0;font-weight:600;text-decoration:underline;" target="_blank">Read the full blog about BLAST &rarr;</a><br>
+ </p></li>
+ 
+ <li><p>And if you want to know everything about BLAST and not interested in reading then 
+   <a href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" target="_blank" style="color:#f44336;font-weight:600;text-decoration:underline;display:inline-block;margin-top:0.5em;">
+   <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" style="width:18px;height:18px;vertical-align:middle;margin-right:6px;filter:invert(23%) sepia(99%) saturate(7499%) hue-rotate(357deg) brightness(98%) contrast(92%);">
+   Watch BLAST Tutorial on YouTube
+ </a></p></li></ul>
+    </section> 
+</section>
+  <div class="chip chip-wide">
+    <h2>Command Explanation</h2>
+  </div>
+<section style="max-width:900px;margin-top:0.5em;">
+  <div style="margin-bottom:1.5em;text-align:center;">
+    <a href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" target="_blank" style="display:inline-block;background:#f44336;color:#fff;padding:0.5em 1.2em;border-radius:8px;font-weight:600;text-decoration:none;box-shadow:0 2px 8px #f4433633;transition:background 0.2s;">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" style="width:22px;height:22px;vertical-align:middle;margin-right:8px;filter:invert(23%) sepia(99%) saturate(7499%) hue-rotate(357deg) brightness(98%) contrast(92%);">
+      Watch Code Explanation on YouTube
+    </a>
+  </div>
+                   
+  <p>Following is the explanation of a command to run BLAST using command prompt terminal> It also explains some alternatives options to get required results of BLAST.<br></p>
+    <div class="code-block">
+      <div class="code-header">
+        <span>Standard Command</span>
+        <button class="copy-btn" onclick="copyCode(this, 'cmd-standard')">Copy</button>
+      </div>
+      <pre id="cmd-standard"><code class="language-bash">
+blastn -query query.fasta -db nr -out results.txt -outfmt 6 -evalue 1e-5 -num_threads 4 -max_target_seqs 10 -word_size 11
+    </code></pre>
+    <div class="explanation">
+      <p><strong>Explanation:</strong><br>
+        This is a standard local BLASTn command comparing nucleotide sequences from <b><code style="size:25px">query.fasta</code> </b>against a standard database <b><code>nr</code></b>, saving results in tabular format. It uses 4 CPU threads, shows the top 10 hits, and uses a default word size of 11 for nucleotide BLAST.
+      </p>
+    </div>
+  </div>
+
+  <h3 style="margin-top:1.2em;">📝 Explanation</h3>
+  <ul style="line-height:1.6; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+
+    <li><b>1. blastn</b><br>
+      Chooses the BLAST program type.<br>
+      Variants:<br>
+      • <code>blastn</code> → Nucleotide vs Nucleotide<br>
+      • <code>blastp</code> → Protein vs Protein<br>
+      • <code>blastx</code> → Translate nucleotide query → search protein db<br>
+      • <code>tblastn</code> → Protein query → search translated nucleotide db<br>
+      • <code>tblastx</code> → Translated nucleotide vs translated nucleotide
+    </li><br>
+
+    <li><b>2. -query query.fasta</b><br>
+      Input file containing your query sequence(s) in FASTA format.<br>
+      Alternative: Provide a full path or use <code>-query -</code> to paste sequences directly.
+    </li><br>
+
+    <li><b>3. -db mydb</b><br>
+      Database against which you’re searching. Must be formatted with <code>makeblastdb</code> if local.<br>
+      Alternatives:<br>
+      • <code>-db nt</code> or <code>-db nr</code> with <code>-remote</code> → Use NCBI’s databases.<br>
+      • <code>-subject subject.fasta</code> → Compare directly to a FASTA file.
+    </li><br>
+
+    <li><b>4. -out results.txt</b><br>
+      File to save results.<br>
+      Alternatives:<br>
+      • Omit → results print directly in CMD.<br>
+      • Redirect manually: <code>> results.txt</code>.
+    </li><br>
+
+    <li><b>5. -outfmt 6</b><br>
+      Output format.<br>
+      Common choices:<br>
+      • <code>0</code> → Pairwise (default, human-readable)<br>
+      • <code>5</code> → XML<br>
+      • <code>6</code> → Tabular<br>
+      • <code>7</code> → Tabular + comments<br>
+      • <code>10</code> → CSV<br>
+      • <code>11</code> → BLAST archive
+    </li><br>
+
+    <li><b>6. -evalue 1e-5</b><br>
+      Expect value threshold (smaller = stricter).<br>
+      Alternatives:<br>
+      • <code>-evalue 1e-10</code> → very strict.<br>
+      • <code>-evalue 10</code> → default, less strict.
+    </li><br>
+
+    <li><b>7. -num_threads 4</b><br>
+      Number of CPU threads to use.<br>
+      Default = 1. Use more if your system supports it.
+    </li><br>
+
+    <li><b>8. -max_target_seqs 10</b><br>
+      Limit the number of hits shown per query.<br>
+      Alternatives:<br>
+      • <code>1</code> → Only best hit.<br>
+      • <code>500</code> → Extensive results.<br>
+      Default = 500.
+    </li><br>
+
+    <li><b>9. -word_size 11</b><br>
+      Seed word length for finding matches.<br>
+      Smaller = more sensitive but slower.<br>
+      Common values:<br>
+      • Nucleotide BLAST → default = 11, can reduce to 7 for short queries.<br>
+      • Protein BLAST → default = 3.
+    </li><br>
+
+  </ul>
+
+  <h3 style="margin-top:1.2em;">⚡ Optional but Useful Parameters</h3>
+  <ul style="line-height:1.6; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    <li><code>-perc_identity 90</code> → Only report matches with ≥90% identity.</li>
+    <li><code>-qcov_hsp_perc 80</code> → Require ≥80% query coverage per HSP.</li>
+    <li><code>-task blastn</code> → Choose variant:<br>
+      • <code>blastn</code> (default)<br>
+      • <code>blastn-short</code> (short reads)<br>
+      • <code>megablast</code> (fast, highly similar)<br>
+      • <code>dc-megablast</code> (cross-species)
+    </li>
+    <li><code>-remote</code> → Run search on NCBI’s servers instead of locally.</li>
+  </ul>
+
+</section>
+</section>
+
+<div class="chip">
+ <h2>Output</h2></div>
+
+ <section>
+   <p style="margin-top:0.5em; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">The output below shows the BLAST results for the provided DNA sequence.</p>
+ <p style="margin-top:0.5em;"><b>Note:</b> Click on the pictue zoom in to get better view or you can download the image by using the button at the bottom of image.</p>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/easyzoom/2.5.0/easyzoom.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/easyzoom/2.5.0/easyzoom.js"></script>
+
+<div class="easyzoom easyzoom--overlay">
+  <a href="../../images/Programs/Command Line Programs/BLAST_cmd_output.png">
+    <img src="../../images/Programs/Command Line Programs/BLAST_cmd_output.png" alt="BLAST Output" style="width:100%;border-radius:12px;place-self:center;box-shadow:0 4px 24px #007acc33;margin:1em auto;display:inline;"/>
+
+<button class="download-btn" onclick="downloadImage('blast_code-img')">Download Output</button></a></div>
+<script>
+  var $easyzoom = $('.easyzoom').easyZoom();
+</script>
+</section>
+<p style="margin-top:0.5em;"><b>Note:</b> If you find any error in the code or have any suggestion please feel free to ask me on <a href="../../contact.html" target="_blank">contact page</a> or use following social media links to connet with me.</p>
+
+        <div class="chip chip-wide"><h2>BLAST Command-Line Manual (NCBI)</h2></div>
+<section style="max-width:900px;margin-top:0.5em;">
+  <p>For full details straight from NCBI, read the official BLAST+ command-line manual.</p>
+  <a class="download-btn"
+     href="https://www.ncbi.nlm.nih.gov/books/NBK279690/pdf/Bookshelf_NBK279690.pdf"
+     target="_blank" rel="noopener">
+    Open NCBI PDF
+  </a>
+  <p style="margin-top:0.6em; font-size:0.95em; color:#555;">
+    Source: NCBI Bookshelf — BLAST® Command Line Applications User Manual.
+  </p>
+</section>
+
+  <div>
+        <p class="fun-note">
+       <span class="star left">🧬</span>
+       <span class="text">Thank you for Visiting!</span>
+       <span class="star right">🧬</span>
+    </p>
+ </div>
+  
+  </main>
+
+    <footer>
+    <div class="social-links" style="margin-bottom:1rem; text-align:center;">
+      <a href="https://www.linkedin.com/in/muhammad-shan-shubraiz-370873106/" target="_blank" style="margin:0 10px;">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" style="width:32px;height:32px;vertical-align:middle;filter:invert(36%) sepia(99%) saturate(747%) hue-rotate(176deg) brightness(92%) contrast(92%);"
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=61557894315656" target="_blank" style="margin:0 10px;">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook" style="width:32px;height:32px;vertical-align:middle;filter:invert(27%) sepia(99%) saturate(749%) hue-rotate(175deg) brightness(98%) contrast(92%);"
+      </a>
+      <a href="https://www.instagram.com/shan_shubraiz/" target="_blank" style="margin:0 10px;">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" style="width:32px;height:32px;vertical-align:middle;filter:invert(23%) sepia(99%) saturate(7499%) hue-rotate(357deg) brightness(98%) contrast(92%);""
+      </a>
+      <a href="https://www.fiverr.com/shan_shubraiz" target="_blank" style="margin:0 10px;">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/fiverr.svg" alt="Fiverr" style="width:32px;height:32px;vertical-align:middle;filter:invert(48%) sepia(99%) saturate(749%) hue-rotate(95deg) brightness(98%) contrast(92%);">
+      </a>
+      <a href="https://www.youtube.com/@shanshubraiz/featured" target="_blank" style="margin:0 10px;">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" style="width:32px;height:32px;vertical-align:middle;filter:invert(23%) sepia(99%) saturate(7499%) hue-rotate(357deg) brightness(98%) contrast(92%);">
+      </a>
+      <div style="margin-top:0.5rem; color:#555; font-size:1rem;">Follow me on social media and subscribe to my YouTube channel!</div>
+    </div>
+    <p>&copy; 2025 Shan Shubraiz</p>
+  </footer>
+</body>
+</html>

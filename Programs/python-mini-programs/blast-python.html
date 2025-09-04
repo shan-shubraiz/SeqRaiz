@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blast Using Python | Shan Shubraiz</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+<script defer src="../../assets/js/script.js"></script>
+  <style>
+    .download-btn {
+      display: inline-block;
+      background: #43c59e;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.5em 1.2em;
+      font-size: 1em;
+      font-weight: 600;
+      margin: 1.2em auto 0 auto;
+      cursor: pointer;
+      box-shadow: 0 2px 8px #43c59e33;
+      transition: background 0.2s;
+    }
+    .download-btn:hover { background: #2193b0; }
+  
+
+    .blast-header-wrap { display: flex; align-items: center; justify-content: space-between; position: relative; }
+    @media (max-width: 600px) { .pdf-btn { right: 8px; top: 8px; font-size: 0.9em; padding: 0.4em 0.7em; } }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+
+  <script>
+    function copyCode(btn, codeId) {
+      const code = document.getElementById(codeId).innerText;
+      navigator.clipboard.writeText(code);
+      btn.innerText = 'Copied!';
+      setTimeout(() => { btn.innerText = 'Copy'; }, 1200);
+    }
+    function downloadImage(imgId) {
+      const img = document.getElementById(imgId);
+      const link = document.createElement('a');
+      link.href = img.src;
+      link.download = img.alt || 'codesnap.png';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+    function downloadPDF(fileID) {
+      const main = document.querySelector('main');
+      const opt = {
+        margin:       0.2,
+        filename:     'BLAST_python.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2 },
+        jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+      };
+      const feedback = document.getElementById('pdf-feedback');
+      feedback.innerText = '';
+      html2pdf().set(opt).from(main).save()
+        .then(function() {
+          feedback.innerText = 'PDF downloaded successfully!';
+          feedback.style.color = '#219150';
+          setTimeout(() => { feedback.innerText = ''; }, 2500);
+        })
+        .catch(function(err) {
+          feedback.innerText = 'PDF download failed. Please try again.';
+          feedback.style.color = '#b71c1c';
+        });
+    }
+  </script>
+</head>
+<body>
+  <nav>
+   <div class="logo">🧬 SeqRaiz</div>
+      <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="../programs.html">Programs</a>
+            <div class="dropdown-content">
+              <a href="python-mini-programs.html">Python Mini Programs</a>
+              <a href="../Command_Line_Programs/Command_Line_Programs.html">Command Line Programs</a>
+            </div>
+        </li>
+        <li><a href="../../Blogs/blogs.html">Blogs</a></li>
+        <li><a href="../../about.html">About</a></li>
+        <li><a href="../../contact.html">Contact</a></li>
+      </ul>
+  </nav>
+  <!-- <search> -->
+  <!-- <form action="/search" method="get"> -->
+    <!-- <input name="fsrch" id="fsrch" placeholder="Search here" style="margin-top: 0.5rem; margin-left: 150%; padding: 6px 12px; width: 200px;background-color: #e3f2fd;"> -->
+  <!-- </form> -->
+<!-- </search>   -->
+<main>
+  <div class="blast-header-wrap">
+     <h1 class="fun-note">
+  <span class="star left">🧬</span>
+  <span class="text">BLAST - Using PYTHON!</span>
+  <span class="star right">🧬</span>
+     </h1>
+   </div>
+  <div class="chip"> <h2>Code </h2></div>
+  
+  <section style="max-width:700px;margin-top:0.5em;"> 
+     <img id="blast_code-img" src="../../images/Programs/Python Mini Programs/BLAST/BLAST_code.png" alt="Blast Python Code Snippet" style="width:100%;max-width:600px;border-radius:12px;margin:2em auto;display:block;">
+     <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1em; margin-left: 65px; gap: 350px;">
+        <button class="download-btn" onclick="downloadImage('blast_code-img')">Download CodeSnap</button>
+    </div>
+  
+</section>
+    <div class="chip">
+<h2>Description</h2></div>
+    <section style="max-width:700px;margin-top:0.5em;">
+      
+      <p>This Python script uses Biopython to run a BLAST search against NCBI nucleotide database. By inputting a DNA sequence, the script connects to NCBI, runs BLAST, saves the results in XML format, and extracts the top 5 matches — showing the organism name, sequence length, best E-value, and accession number.<br>
+      <a href="../../Blogs/BLAST_Blog.html" style="color:#2193b0;font-weight:600;text-decoration:underline;" target="_blank">Read the full blog about BLAST &rarr;</a><br>
+      <a href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" target="_blank" style="color:#f44336;font-weight:600;text-decoration:underline;display:inline-block;margin-top:0.5em;">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" style="width:18px;height:18px;vertical-align:middle;margin-right:6px;filter:invert(23%) sepia(99%) saturate(7499%) hue-rotate(357deg) brightness(98%) contrast(92%);">
+        Watch BLAST Tutorial on YouTube
+      </a>
+      </p>
+    </section>
+    <div class="chip">
+      <h2>Code Explanation</h2></div>
+      <section style="max-width:900px;margin-top:0.5em;">
+      <div style="margin-bottom:1.5em;text-align:center;">
+        <a href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" target="_blank" style="display:inline-block;background:#f44336;color:#fff;padding:0.5em 1.2em;border-radius:8px;font-weight:600;text-decoration:none;box-shadow:0 2px 8px #f4433633;transition:background 0.2s;">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" style="width:22px;height:22px;vertical-align:middle;margin-right:8px;filter:invert(23%) sepia(99%) saturate(7499%) hue-rotate(357deg) brightness(98%) contrast(92%);">
+          Watch Code Explanation on YouTube
+        </a>
+      </div>
+<div class="code-explanation">
+
+  <!-- Step 1 -->
+  <div class="code-block">
+    <div class="code-header">
+      <span>Step 1: Imports & Server Check</span>
+      <button class="copy-btn" onclick="copyCode(this, 'code1')">Copy</button>
+    </div>
+    <pre id="code1"><code class="language-python">
+import os
+import csv
+import requests
+from datetime import datetime
+from Bio.Blast import NCBIWWW, NCBIXML
+
+def check_ncbi_server(url="https://blast.ncbi.nlm.nih.gov/Blast.cgi"):
+    try:
+        response = requests.get(url, timeout=5)
+        return response.status_code == 200
+    except Exception as e:
+        print("Unable to reach NCBI BLAST server:", e)
+        return False
+    </code></pre>
+    <div class="explanation">
+      <p><strong>Explanation:</strong><br>
+        1–5: Import libraries for file handling, CSV export, server check, timestamps, and BLAST.<br>
+        7–14: Function <code>check_ncbi_server</code> ensures NCBI BLAST is reachable before running queries.
+      </p>
+    </div>
+  </div>
+
+  <!-- Step 2 -->
+  <div class="code-block">
+    <div class="code-header">
+      <span>Step 2: Sequence Validation</span>
+      <button class="copy-btn" onclick="copyCode(this, 'code2')">Copy</button>
+    </div>
+    <pre id="code2"><code class="language-python">
+def validate_sequence(sequence, seq_type):
+    if seq_type == "dna":
+        valid_chars = set("ATGCN")
+    elif seq_type == "rna":
+        valid_chars = set("AUGCN")
+    elif seq_type == "protein":
+        valid_chars = set("ACDEFGHIKLMNPQRSTVWYBXZ")
+    else:
+        return False
+    
+    return all(base in valid_chars for base in sequence)
+    </code></pre>
+    <div class="explanation">
+      <p><strong>Explanation:</strong><br>
+        1–9: Validates whether the sequence contains correct characters for DNA, RNA, or proteins.<br>
+        11: Returns <code>True</code> only if all characters are valid.
+      </p>
+    </div>
+  </div>
+
+  <!-- Step 3 -->
+  <div class="code-block">
+    <div class="code-header">
+      <span>Step 3: Run BLAST Query</span>
+      <button class="copy-btn" onclick="copyCode(this, 'code3')">Copy</button>
+    </div>
+    <pre id="code3"><code class="language-python">
+def run_blast(sequence, program="blastn", database="nr", hitlist_size=10):
+    try:
+        print(f"\nRunning {program} against {database} database...")
+        result_handle = NCBIWWW.qblast(program, database, sequence, hitlist_size=hitlist_size)
+
+        blast_records = NCBIXML.parse(result_handle)
+        results = []
+
+        for blast_record in blast_records:
+            for alignment in blast_record.alignments:
+                for hsp in alignment.hsps:
+                    results.append({
+                        "title": alignment.title,
+                        "length": alignment.length,
+                        "e_value": hsp.expect,
+                        "score": hsp.score,
+                        "identities": hsp.identities,
+                        "query_start": hsp.query_start,
+                        "query_end": hsp.query_end,
+                    })
+        return results[:hitlist_size]
+    except Exception as e:
+        print("Error running BLAST:", e)
+        return []
+    </code></pre>
+    <div class="explanation">
+      <p><strong>Explanation:</strong><br>
+        1: Function to run BLAST with program, database, and hit limit.<br>
+        4–5: Submits the query using Biopython.<br>
+        7–19: Loops through results, extracts key details, and stores them.<br>
+        20–23: Returns results or an empty list if error occurs.
+      </p>
+    </div>
+  </div>
+
+  <!-- Step 4 -->
+  <div class="code-block">
+    <div class="code-header">
+      <span>Step 4: Save Results</span>
+      <button class="copy-btn" onclick="copyCode(this, 'code4')">Copy</button>
+    </div>
+    <pre id="code4"><code class="language-python">
+def save_results(results, filename, filetype="txt"):
+    if filetype == "txt":
+        with open(filename, "w") as f:
+            if results:
+                for i, r in enumerate(results, 1):
+                    f.write(f"Result {i}:\n")
+                    f.write(f"Title: {r['title']}\n")
+                    f.write(f"Length: {r['length']}\n")
+                    f.write(f"E-value: {r['e_value']}\n")
+                    f.write(f"Score: {r['score']}\n")
+                    f.write(f"Identities: {r['identities']}\n")
+                    f.write(f"Query range: {r['query_start']} - {r['query_end']}\n")
+                    f.write("-"*40 + "\n")
+            else:
+                f.write("No results found.\n")
+
+    elif filetype == "csv":
+        with open(filename, "w", newline="") as f:
+            writer = csv.DictWriter(f, fieldnames=["title", "length", "e_value", "score", "identities", "query_start", "query_end"])
+            writer.writeheader()
+            writer.writerows(results if results else [])
+
+    print(f"\n✅ Results saved as {os.path.basename(filename)} at {os.path.abspath(filename)}")
+    </code></pre>
+    <div class="explanation">
+      <p><strong>Explanation:</strong><br>
+        1: Function saves results in TXT or CSV format.<br>
+        3–14: Writes human-readable text.<br>
+        16–20: Writes structured CSV for spreadsheets.<br>
+        22: Confirms where the file was saved.
+      </p>
+    </div>
+  </div>
+
+  <!-- Step 5 -->
+  <div class="code-block">
+    <div class="code-header">
+      <span>Step 5: Main Program Flow</span>
+      <button class="copy-btn" onclick="copyCode(this, 'code5')">Copy</button>
+    </div>
+    <pre id="code5"><code class="language-python">
+if __name__ == "__main__":
+    if not check_ncbi_server():
+        print("NCBI BLAST server is not reachable. Try again later.")
+        exit()
+
+    job_name = input("Enter job name (optional): ").strip() or "BLAST_result"
+    seq_type = input("Enter sequence type (DNA/RNA/Protein): ").strip().lower()
+    sequence = input("Enter your sequence: ").strip().upper()
+
+    if not validate_sequence(sequence, seq_type):
+        print("❌ Invalid sequence for given type.")
+        exit()
+
+    print("\nAvailable BLAST programs:")
+    print("1. blastn   (DNA/RNA → DNA)")
+    print("2. blastp   (Protein → Protein)")
+    print("3. blastx   (DNA/RNA → Protein)")
+    print("4. tblastn  (Protein → DNA)")
+    print("5. tblastx  (DNA/RNA → Translated DNA)")
+    program = {"1": "blastn","2": "blastp","3": "blastx","4": "tblastn","5": "tblastx"}.get(input("Choose (1-5): "), "blastn")
+
+    print("\nAvailable databases:")
+    print("1. nr  | 2. nt  | 3. refseq_protein  | 4. refseq_rna  | 5. pdb")
+    database = {"1": "nr","2": "nt","3": "refseq_protein","4": "refseq_rna","5": "pdb"}.get(input("Choose (1-5): "), "nr")
+
+    try:
+        hitlist_size = int(input("\nEnter number of hits (default 10): ").strip())
+    except ValueError:
+        hitlist_size = 10
+
+    results = run_blast(sequence, program=program, database=database, hitlist_size=hitlist_size)
+
+    filetype = input("\nChoose output file type (txt/csv): ").strip().lower() or "txt"
+    save_path = input("Enter folder path to save (blank=current dir): ").strip() or os.getcwd()
+    if not os.path.exists(save_path): save_path = os.getcwd()
+
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = os.path.join(save_path, f"{job_name}_{timestamp}.{filetype}")
+    save_results(results, filename, filetype)
+    </code></pre>
+    <div class="explanation">
+      <p><strong>Explanation:</strong><br>
+        2–5: Check server availability.<br>
+        7–11: Get job name, sequence type, and sequence.<br>
+        13–15: Validate sequence.<br>
+        17–23: User selects BLAST program.<br>
+        25–29: User selects database.<br>
+        31–34: Number of hits input (default 10).<br>
+        36: Run BLAST with chosen settings.<br>
+        38–44: Ask file type, save path, and validate path.<br>
+        46–47: Add timestamp to avoid overwriting and save results.
+      </p>
+    </div>
+  </div>
+
+</div>
+
+</section>
+<div class="chip">
+ <h2>Output of Code</h2></div>
+
+<section> 
+   <p style="margin-top:0.5em; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">The output below shows the top 5 BLAST results for the provided DNA sequence, including organism name, sequence length, E-value, Scores, Identities and accession number.</p>
+ <p style="margin-top:0.5em;"><b>Note:</b> Click on the pictue zoom in to get better view or you can download the image by using the button at the bottom of image.</p>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/easyzoom/2.5.0/easyzoom.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/easyzoom/2.5.0/easyzoom.js"></script>
+
+<div class="easyzoom easyzoom--overlay">
+  <a href="../../images/Programs/Python Mini Programs/BLAST/BLAST_output.png">
+    <img src="../../images/Programs/Python Mini Programs/BLAST/BLAST_output.png" alt="BLAST Output" style="width:100%;border-radius:12px;place-self:center;margin:1em auto;display:inline;"/>
+
+<button class="download-btn" onclick="downloadImage('blast_code-img')">Download Output</button></a></div>
+<script>
+  var $easyzoom = $('.easyzoom').easyZoom();
+</script>
+</section> 
+<p style="margin-top:0.5em;"><b>Note:</b> If you find any error in the code or have any suggestion please feel free to ask me on <a href="contact.html" target="_blank">contact page</a> or use following social media links to connet with me.</p>
+
+  <div>
+        <p class="fun-note">
+       <span class="star left">🧬</span>
+       <span class="text">Thank you for Visiting!</span>
+       <span class="star right">🧬</span>
+    </p>
+ </div>
+  
+  </main>
+
+    <footer>
+    <div class="social-links" style="margin-bottom:1rem; text-align:center;">
+      <a href="https://www.linkedin.com/in/muhammad-shan-shubraiz-370873106/" target="_blank" style="margin:0 10px;">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" style="width:32px;height:32px;vertical-align:middle;filter:invert(36%) sepia(99%) saturate(747%) hue-rotate(176deg) brightness(92%) contrast(92%);"
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=61557894315656" target="_blank" style="margin:0 10px;">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook" style="width:32px;height:32px;vertical-align:middle;filter:invert(27%) sepia(99%) saturate(749%) hue-rotate(175deg) brightness(98%) contrast(92%);"
+      </a>
+      <a href="https://www.instagram.com/shan_shubraiz/" target="_blank" style="margin:0 10px;">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" style="width:32px;height:32px;vertical-align:middle;filter:invert(23%) sepia(99%) saturate(7499%) hue-rotate(357deg) brightness(98%) contrast(92%);">
+      </a>
+      <a href="https://www.fiverr.com/shan_shubraiz" target="_blank" style="margin:0 10px;">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/fiverr.svg" alt="Fiverr" style="width:32px;height:32px;vertical-align:middle;filter:invert(48%) sepia(99%) saturate(749%) hue-rotate(95deg) brightness(98%) contrast(92%);">
+      </a>
+      <a href="https://www.youtube.com/@shanshubraiz/featured" target="_blank" style="margin:0 10px;">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" style="width:32px;height:32px;vertical-align:middle;filter:invert(23%) sepia(99%) saturate(7499%) hue-rotate(357deg) brightness(98%) contrast(92%);">
+      </a>
+      <div style="margin-top:0.5rem; color:#555; font-size:1rem;">Follow me on social media and subscribe to my YouTube channel!</div>
+    </div>
+    <p>&copy; 2025 Shan Shubraiz</p>
+  </footer>
+</body>
+</html>

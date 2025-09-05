@@ -319,16 +319,6 @@ section, main {
   transform: scale(1.05);
   transition: transform 0.2s ease-in-out;
 }
-
-
-/*  */
-/* .bio-img { */
-  /* display: block; */
-  /* margin: 2rem auto 0 auto; */
-  /* max-width: 220px; */
-  /* border-radius: 50%; */
-  /* box-shadow: 0 2px 16px #26a69a55; */
-/* } */
 .fun-note {
     font-size: 24px;
     font-weight: bold;

@@ -282,7 +282,7 @@ section, main {
   box-shadow: 0 1px 4px #ccc;
   background: #fff;
   object-fit: contain;
-  display: block;
+  display: responsive;
 }
 
 /* Mobile adjustments */

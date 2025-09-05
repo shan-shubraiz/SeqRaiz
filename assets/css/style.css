@@ -312,17 +312,9 @@ section, main {
   height: auto;      /* preserve aspect ratio */
   margin: 1rem auto;
   box-shadow: 0 2px 10px #26a69a55;
+  cursor: pointer; 
 }
 
-
-/* .blog-img { */
-  /* display: block;            */
-  /* max-width: 100%;           */
-  /* height: auto;              */
-  /* margin: 1rem auto;         */
-  /* object-fit:fill; */
-  /* cursor: pointer;  */
-/* } */
 .blog-img:hover {
   transform: scale(1.05);
   transition: transform 0.2s ease-in-out;

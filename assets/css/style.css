@@ -229,30 +229,80 @@ section, main {
   box-shadow: 0 6px 24px #26a69a55;
 }
 
+
+/* Link styling */
+.blog-post-link {
+  text-decoration: none;
+  color: inherit;
+  display: block; /* ensures the whole block is clickable */
+}
+
+/* Blog article */
 .blog-post {
-  margin-bottom: 2rem;
-  border-left: 4px solid #26a69a;
-  padding-left: 1rem;
-  background: #f1f8e9;
-  border-radius: 8px;
-}
-.blog-figure {
-    text-align: center;       /* centers the image and caption */
-    margin: 20px 0;           /* spacing above and below */
+  background: #f9f9f9;
+  border-left: 5px solid #24c567;
+  padding: 12px;
+  margin: 12px 0;
 }
 
+/* Flex container for text + image */
+.blog-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap; /* allows wrapping on smaller screens */
+}
+
+/* Text content */
+.blog-text {
+  flex: 1 1 200px; /* flexible width for responsiveness */
+}
+
+/* Blog title */
+.blog-text h2 {
+  margin: 0;
+  font-size: 1.2em;
+  line-height: 1.3;
+}
+
+/* Blog description */
+.blog-text p {
+  margin: 6px 0 0;
+  font-size: 0.98em;
+  line-height: 1.4;
+}
+
+/* Image styling */
 .blog-image {
-    max-width: 100%;          /* makes the image responsive */
-    height: auto;             /* maintains aspect ratio */
-    border-radius: 8px;       /* optional rounded corners */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);  /* subtle shadow */
+  flex: 0 0 auto; /* fixed width image */
+  width: 100%;
+  max-width: 170px;
+  height: 110px;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px #ccc;
+  background: #fff;
+  object-fit: contain;
+  display: block;
 }
 
-.blog-figure figcaption {
-    font-size: 14px;
-    color: #555;
-    margin-top: 5px;
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .blog-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .blog-image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+  }
 }
+
+
+
+
 .bio-img {
   display: block;
   margin: 2rem auto 0 auto;
